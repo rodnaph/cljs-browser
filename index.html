@@ -2,14 +2,18 @@
 <head>
 <title>DnD Demo</title>
 
-<script type="text/javascript" src="../closure-library/closure/goog/base.js"></script>
-<script type="text/javascript" src="src/main.js"></script>
+<script type="text/javascript" src="build/main.js"></script>
+<script type="text/javascript">
+function init() {
+    rodnaph.dnd.init();
+}
+</script>
 
 <link type="text/css" rel="stylesheet" href="css/default.css" />
 
 </head>
 
-<body onload="boxuk.artform.initCarcassEditor();">
+<body onload="init();">
 
 <div id="carcass">
     <ul class="column" id="column1">
