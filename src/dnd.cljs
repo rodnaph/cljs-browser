@@ -13,21 +13,16 @@
             (.addItem dnd target))
         dnd))
 
-(defn drag-over-anchor
-    "Handler for when an anchor is dragged over"
-    [evt]
-    (dom/add-class evt.dropTargetItem.element "hovered"))
-
-(defn drag-out-anchor
+(defn drag-anchor
     "Handler for when an dragging off an anchor"
     [evt]
-    (dom/remove-class evt.dropTargetItem.element "hovered"))
+    (dom/toggle-class evt.dropTargetItem.element "hovered"))
 
 (defn add-anchor-events
     "Add events for target anchor elements"
     [anchors]
-    (.listen goog.events anchors "dragover" drag-over-anchor)
-    (.listen goog.events anchors "dragout" drag-out-anchor))
+    (.listen goog.events anchors "dragover" drag-anchor)
+    (.listen goog.events anchors "dragout" drag-anchor))
 
 (defn ^:export init
     "Initialise draggable elements"

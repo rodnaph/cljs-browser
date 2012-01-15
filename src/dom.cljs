@@ -21,10 +21,17 @@
          (string/join " ")
          (.setAttribute el "class")))
 
-(defn has-class
+(defn has-class?
     "Indicates if an element has a class"
     [el klass]
     (some #(= klass %) (classes el)))
+
+(defn toggle-class
+    "Toggles a class on an element"
+    [el klass]
+    (if (has-class? el klass)
+        (remove-class el klass)
+        (add-class el klass)))
 
 (defn add-class
     "Adds a class to an element"
