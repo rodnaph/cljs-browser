@@ -25,11 +25,45 @@
     background-color: #faa;
 }
 
+.droppable-target {
+    background-color: #55f;
+}
+
 ul {
     padding: 0;
 }
 
 li {
     list-style-type: none;
+}
+
+.items {
+    margin: 20px;
+    padding: 10px;
+    border: 1px #aaa solid;
+    background-color: #ccc;
+    width: 43px;
+}
+
+.draggable-item,
+.dropped-item {
+    width: 40px;
+    height: 40px;
+    background-color: #afa;
+    border: 1px #0f0 solid;
+}
+
+.draggable-item {
+    cursor: move;
+}
+
+.items .draggable-item {
+    margin-bottom: 5px;
+}
+
+.column .dropped-item {
+    float: left;
+    position: relative;
+    top: -21px;
 }
 

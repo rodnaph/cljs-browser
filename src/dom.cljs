@@ -42,4 +42,4 @@
     "Removed a class from an element"
     [el klass]
     (affect-class el klass #(identity %2)))
- 
+
