@@ -26,6 +26,11 @@
     [el klass]
     (some #(= klass %) (classes el)))
 
+(defn has-classes?
+    "Indicates if the item has all the specified classes"
+    [el & classes]
+    (every? (partial has-class? el) classes))
+
 (defn toggle-class
     "Toggles a class on an element"
     [el klass]

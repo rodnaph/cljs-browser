@@ -23,10 +23,10 @@
 (defn can-drop-item?
     "Indicates of the item can be dropped on the target"
     [source target]
-    (and (dom/has-class? source "droppable-item")
-         (dom/has-class? target "droppable-target")))
+    (dom/has-classes? source 
+        "droppable-item" "droppable-target"))
 
-(defn drop-anchor
+(defn handle-drop
     "Handler for when a drop occurs over an anchor"
     [evt]
     (let [target (. evt.dropTargetItem -element)
@@ -37,17 +37,17 @@
             (if (dom/has-class? source "makes-droppable")
                 (dom/add-class target "droppable-target")))))
 
-(defn drag-anchor
-    "Handler for when an dragging off an anchor"
+(defn toggle-hover
+    "Toggle the hover class on the drag target"
     [evt]
     (dom/toggle-class evt.dropTargetItem.element "hovered"))
 
-(defn add-anchor-events
+(defn add-drag-events
     "Add events for target anchor elements"
     [anchors]
-    (.listen goog.events anchors "drop" drop-anchor)
-    (.listen goog.events anchors "dragover" drag-anchor)
-    (.listen goog.events anchors "dragout" drag-anchor))
+    (.listen goog.events anchors "drop" handle-drop)
+    (.listen goog.events anchors "dragover" toggle-hover)
+    (.listen goog.events anchors "dragout" toggle-hover))
 
 (defn ^:export init
     "Initialise draggable elements"
@@ -59,6 +59,6 @@
           init #(. % (init))]
         (dorun (map make-drag-source [sources items]))
         (dorun (map init [sources anchors items]))
-        (add-anchor-events anchors)
+        (add-drag-events anchors)
     ))
 
