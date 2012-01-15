@@ -1,0 +1,35 @@
+
+.column {
+    width: 300px;
+    background-color: #eee;
+}
+
+.shelf-anchor {
+    height: 20px;
+    background-color: #ddd;
+    margin: 1px;
+}
+
+.shelf {
+    background-color: #000;
+    height: 20px;
+    width: 300px;
+    cursor: move;
+}
+
+.has-shelf {
+    background-color: #44f;
+}
+
+.hovered {
+    background-color: #faa;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
