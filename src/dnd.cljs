@@ -1,7 +1,7 @@
 
 (ns rodnaph.dnd
     (:require [rodnaph.helpers :as helpers]
-              [goog.dom :as dom]
+              [rodnaph.dom :as dom]
               [goog.events :as events]
               [goog.fx.DragDropGroup :as DragDropGroup]))
 
@@ -16,12 +16,12 @@
 (defn drag-over-anchor
     "Handler for when an anchor is dragged over"
     [evt]
-    (helpers/log "OVER"))
+    (dom/add-class evt.dropTargetItem.element "hovered"))
 
 (defn drag-out-anchor
     "Handler for when an dragging off an anchor"
     [evt]
-    (helpers/log "OUT"))
+    (dom/remove-class evt.dropTargetItem.element "hovered"))
 
 (defn add-anchor-events
     "Add events for target anchor elements"

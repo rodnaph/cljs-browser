@@ -1,8 +1,13 @@
 
 (ns rodnaph.helpers
-    (:require [goog.dom :as dom]))
+    (:require [clojure.string :as string]
+              [goog.dom :as dom]))
 
-(defn- log
+(extend-type js/NodeList 
+    ISeqable 
+    (-seq [array] (array-seq array 0))) 
+
+(defn log
     "Write a log message"
     [msg]
     (.log js/console msg))
@@ -11,8 +16,4 @@
     "Fetch elements with specified class"
     [klass]
     (.getElementsByClass goog.dom klass)) 
-
-(extend-type js/NodeList 
-    ISeqable 
-    (-seq [array] (array-seq array 0))) 
 
