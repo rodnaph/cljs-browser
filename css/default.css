@@ -4,20 +4,20 @@
     background-color: #eee;
 }
 
-.shelf-anchor {
+.target-anchor {
     height: 20px;
     background-color: #ddd;
     margin: 1px;
 }
 
-.shelf {
+.source {
     background-color: #000;
     height: 20px;
     width: 300px;
     cursor: move;
 }
 
-.has-shelf {
+.has-target {
     background-color: #44f;
 }
 

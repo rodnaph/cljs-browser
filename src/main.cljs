@@ -24,8 +24,8 @@
     "Created a drag group with the items matching klass"
     [klass]
     (let [dnd (goog.fx.DragDropGroup.)]
-        (doseq [shelf (by-class klass)]
-            (.addItem dnd shelf))
+        (doseq [target (by-class klass)]
+            (.addItem dnd target))
         dnd))
 
 (defn drag-over-anchor
@@ -39,7 +39,7 @@
     (log "OUT"))
 
 (defn add-anchor-events
-    "Add events for shelf anchor elements"
+    "Add events for target anchor elements"
     [anchors]
     (.listen goog.events anchors "dragover" drag-over-anchor)
     (.listen goog.events anchors "dragout" drag-out-anchor))
@@ -47,10 +47,10 @@
 (defn ^:export init
     "Initialise draggable elements"
     []
-    (let [shelves (drag-group "shelf")
-          anchors (drag-group "shelf-anchor")]
-        (.addTarget shelves anchors)
-        (.init shelves)
+    (let [sources (drag-group "source")
+          anchors (drag-group "target-anchor")]
+        (.addTarget sources anchors)
+        (.init sources)
         (.init anchors)
         (add-anchor-events anchors)
     ))
