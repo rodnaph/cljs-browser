@@ -30,8 +30,8 @@
     (let [sources (drag-group "source")
           anchors (drag-group "target-anchor")]
         (.addTarget sources anchors)
-        (.init sources)
-        (.init anchors)
+        (.init sources nil)
+        (.init anchors nil)
         (add-anchor-events anchors)
     ))
 
