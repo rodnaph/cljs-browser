@@ -23,14 +23,14 @@
 (defn can-drop-item?
     "Indicates of the item can be dropped on the target"
     [source target]
-    (dom/has-classes? source 
-        "droppable-item" "droppable-target"))
+    (and (dom/has-class? source "droppable-item")
+         (dom/has-class? target "droppable-target")))
 
 (defn handle-drop
     "Handler for when a drop occurs over an anchor"
     [evt]
-    (let [target (. evt.dropTargetItem -element)
-          source (. evt.dragSourceItem -element)]
+    (let [target evt.dropTargetItem.element
+          source evt.dragSourceItem.element]
         (dom/remove-class target "hovered")
         (if (can-drop-item? source target)
             (add-dropped-item target)
